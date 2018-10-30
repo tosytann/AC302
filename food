@@ -46,3 +46,19 @@ def numDays(day, month):
             daysPassed += daysInMonth[str(i)]
         #1 jan is inclusive (stated in qns) so got to minus it away to prevent extra day counted
         return (daysPassed - 1)
+        
+        
+
+#determine which day it is 
+remainder = (numDays(int(day_num), int(month_num)) % 7)
+determineDay = {0:"Monday", 1:"Tuesday", 2:"Wednesday", 3:"Thursday", 4:"Friday", 5:"Saturday", 6:"Sunday"}
+exactday = determineDay[remainder]
+
+#determine which month it is
+determineMonth = {1:"January", 2:"February", 3:"March", 4:"April", 5:"May", 6:"June", 7:"July", 8:"August", 9:"September", 10: "October", 11:"November", 12:"December"}
+exactmonth = determineMonth[int(month_num)]
+
+#output
+print(str(day_num) + " " + exactmonth + " 2018 is a " + exactday)
+
+#all the best!!!
