@@ -1,12 +1,48 @@
-name_of_month = input("Enter the month of the date: ")
+#only need to import if you using method 1 for qns (ii)
+from datetime import date
 
+#ask for user inputs
+day_num = input("Enter the day of the date: ")
+month_num = input("Enter the month of the date: ")
 
+#Question (i)
+#Function to return number of days for a specific month
 def no_of_days(month):
+    #feb
     if month == "2":
         return(28)
+    #april, june, sep, nov
     elif month in ("4", "6", "9", "11"):
         return(30)
+    #jan, march, may, july, aug, oct, dec
     elif month in ("1", "3", "5", "7", "8", "10", "12"):
         return(31)
+    #factor in invalid inputs
     else:
         print("Wrong month name") 
+
+#Question (ii) : FRIEND GOT TWO WAYS TO DO IT so just choose 1
+
+
+#method 1 using datetime
+#function to return total number of days
+def totaldays (days):
+    #starting date
+    start = date(2018, 1, 1)
+    #ending date
+    end = date(2018, int(month_num), int(day_num))
+    #find the difference between starting and ending date
+    between = end - start
+    return(between.days)
+
+#method 2 without date time
+#function to return total number of days
+def numDays(day, month):
+        #dictionary to store number of days for each month
+        daysInMonth = {"1":31, "2":28, "3":31, "4":30, "5":31, "6":30, "7":31, "8":31, "9":30, "10":31, "11":30, "12":31}
+        daysPassed = day
+        #loop through months that has past to count days
+        for i in range (1, month):
+            daysPassed += daysInMonth[str(i)]
+        #1 jan is inclusive (stated in qns) so got to minus it away to prevent extra day counted
+        return (daysPassed - 1)
